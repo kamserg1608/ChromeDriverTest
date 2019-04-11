@@ -1,17 +1,46 @@
 package DFFDFD;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-@Test
-public class ChromeTest {
 
+public class ChromeTest {
+    private static ChromeDriverService service;
+    private WebDriver driver;
+
+    @BeforeClass
+    public static void createAndStartService() throws IOException {
+        service = new ChromeDriverService.Builder()
+                .usingPort(11107)
+                .build();
+        service.start();
+    }
+
+    @AfterClass
+    public static void createAndStopService() {
+        service.stop();
+    }
+
+    @BeforeMethod
+    public void createDriver() {
+        driver = new RemoteWebDriver(service.getUrl(),
+                DesiredCapabilities.chrome());
+    }
+
+    @AfterMethod
+    public void quitDriver() {
+        driver.quit();
+    }
+    @Test
     public void firstTest123(){
-       WebDriver driver = new ChromeDriver();
+//       WebDriver driver = new ChromeDriver();
        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
        driver.manage().window().maximize();
        driver.navigate().to("http://localhost:8080/armada");
