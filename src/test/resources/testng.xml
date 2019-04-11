@@ -1,0 +1,16 @@
+<suite name="Suite1" verbose="1" >
+    <test name="FirstTest2" >
+        <classes>
+            <class name="DFFDFD.ChromeTest">
+                <methods>
+                    <incluse name="firstTest123"></incluse>
+                </methods>
+            </class>
+            <class name="DFFDFD.BUGAGA.AZAZATest">
+                <methods>
+                    <incluse name="firstTest12345"></incluse>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
