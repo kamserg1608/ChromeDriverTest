@@ -46,6 +46,7 @@ public class ChromeTest {
        WebDriver  driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
        driver.manage().window().maximize();
+       //asdasd
        driver.navigate().to("http://localhost:8080/armada");
         try {
             Thread.sleep(5000);
