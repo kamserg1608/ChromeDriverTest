@@ -11,7 +11,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
+import java.util.logging.Logger;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -19,6 +19,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class ChromeTest {
+    private final static Logger LOGGER = Logger.getLogger(ChromeTest.class.getName());
     private static ChromeDriverService service;
     private WebDriver driver;
 
@@ -71,11 +72,14 @@ public class ChromeTest {
 //region variant3
 //        ////////////////////
         System.setProperty("webdriver.chrome.driver", "c:\\Program Files (x86)\\Jenkins\\tools\\chromedriver.exe");
+        LOGGER.info("before chrome");
         driver = new ChromeDriver();
+        LOGGER.info("after chrome");
 // endregion
 
        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
        driver.manage().window().maximize();
+        LOGGER.info("maximazi");
        //asdasd
        driver.navigate().to("http://localhost:8080/armada");
         try {
