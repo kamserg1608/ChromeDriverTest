@@ -1,7 +1,12 @@
 package DFFDFD;
 
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
@@ -42,8 +47,33 @@ public class ChromeTest {
 //    }
     @Test
     public void firstTest123() throws MalformedURLException {
-       DesiredCapabilities capability = DesiredCapabilities.chrome();
-       WebDriver  driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
+//region variant1
+//        driver = new ChromeDriver();
+// endregion
+//        ////////////////////
+//region variant2
+//       DesiredCapabilities capability = DesiredCapabilities.chrome();
+//       capability.setBrowserName(BrowserType.CHROME);
+//       capability.setPlatform(Platform.fromString("Windows 8.1'"));
+//       capability
+//       capability.setVersion("73.0.3683.86");
+//       WebDriver  driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
+// endregion
+//        ////////////////////
+//region variant3
+//        ChromeOptions options = new ChromeOptions();
+//        options.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
+//        options.setCapability(CapabilityType.PLATFORM_NAME, Platform.WINDOWS);
+//        options.setCapability(CapabilityType.BROWSER_VERSION, "73.0.3683.86");
+//        driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), options);
+// endregion
+//        ////////////////////
+//region variant3
+//        ////////////////////
+        System.setProperty("webdriver.chrome.driver", "c:\\Program Files (x86)\\Jenkins\\tools\\chromedriver.exe");
+        driver = new ChromeDriver();
+// endregion
+
        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
        driver.manage().window().maximize();
        //asdasd
