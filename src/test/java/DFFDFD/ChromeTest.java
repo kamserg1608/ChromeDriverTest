@@ -71,7 +71,7 @@ public class ChromeTest {
 //        ////////////////////
 //region variant3
 //        ////////////////////
-        System.setProperty("webdriver.chrome.driver", "c:\\Program Files (x86)\\Jenkins\\tools\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "\\tools\\chromedriver\\chromedriver.exe");
         LOGGER.info("before chrome");
         driver = new ChromeDriver();
         LOGGER.info("after chrome");
