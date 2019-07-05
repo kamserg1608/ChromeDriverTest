@@ -1,5 +1,6 @@
 package DFFDFD;
 
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ChromeTest {
     private final static Logger LOGGER = Logger.getLogger(ChromeTest.class.getName());
-    private static ChromeDriverService service;
+
     private WebDriver driver;
 
 //    @BeforeClass
@@ -74,6 +75,16 @@ public class ChromeTest {
         System.setProperty("webdriver.chrome.driver", "c:\\chromedriver\\chromedriver.exe");
         LOGGER.info("before chrome");
         driver = new ChromeDriver();
+
+        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+
+        String browserName = cap.getBrowserName();
+        System.out.println(browserName);
+
+
+        String v = cap.getVersion().toString();
+        System.out.println(v);
+
         LOGGER.info("after chrome");
 // endregion
 
@@ -81,7 +92,8 @@ public class ChromeTest {
        driver.manage().window().maximize();
         LOGGER.info("maximazi");
        //asdasd
-       driver.navigate().to("http://localhost:8080/armada");
+//       driver.navigate().to("http://localhost:8080/armada");
+       driver.navigate().to("http://gserver.ircoc.vrn.ru/ircosweb/?p=507");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
