@@ -70,11 +70,37 @@ public class ChromeTest {
 //        driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), options);
 // endregion
 //        ////////////////////
+
 //region variant3
 //        ////////////////////
-        System.setProperty("webdriver.chrome.driver", "c:\\chromedriver\\chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "c:\\chromedriver\\chromedriver.exe");
+// endregion
+//        ////////////////////
+
+//region variant4
+//        ////////////////////
+        String nameOS = "os.name";
+        String systemName = System.getProperty(nameOS);
+        String chromeDriverPath = "";
+        String chromeBrowserProfile = "";
+        switch (systemName){
+            case "Linux" :
+                chromeDriverPath = "/opt/chromedriverfolder/chromedriver";
+                chromeBrowserProfile = "user-data-dir=/home/cont/.config/google-chrome";
+                break;
+            case "Windows":
+                chromeDriverPath = "c:\\chromedriver\\chromedriver.exe";
+                chromeBrowserProfile = "user-data-dir=c:\\Users\\Cont\\AppData\\Local\\Google\\Chrome\\User Data";
+                break;
+        }
+        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+//
         LOGGER.info("before chrome");
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments(chromeBrowserProfile);
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        driver = new ChromeDriver(capabilities);
 
         Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
 
@@ -86,20 +112,21 @@ public class ChromeTest {
         System.out.println(v);
 
         LOGGER.info("after chrome");
+//        ////////////////////
 // endregion
 
-       driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-       driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
         LOGGER.info("maximazi");
-       //asdasd
+        //asdasd
 //       driver.navigate().to("http://localhost:8080/armada");
-       driver.navigate().to("http://gserver.ircoc.vrn.ru/ircosweb/?p=507");
+        driver.navigate().to("http://gserver.ircoc.vrn.ru/ircosweb/?p=507");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-       driver.quit();
+        driver.quit();
     }
 
     public void firstTest123455678(){
