@@ -81,6 +81,10 @@ public class ChromeTest {
 //        ////////////////////
         String nameOS = "os.name";
         String systemName = System.getProperty(nameOS);
+        if(systemName.contains("Windows")){
+            systemName = "Windows";
+        }
+
         String chromeDriverPath = "";
         String chromeBrowserProfile = "";
         switch (systemName){
@@ -89,12 +93,12 @@ public class ChromeTest {
                 chromeBrowserProfile = "user-data-dir=/home/cont/.config/google-chrome";
                 break;
             case "Windows":
-                chromeDriverPath = "c:\\chromedriver\\chromedriver.exe";
-                chromeBrowserProfile = "user-data-dir=c:\\Users\\Cont\\AppData\\Local\\Google\\Chrome\\User Data";
+                chromeDriverPath = "C:\\chromedriver\\chromedriver.exe";
+                chromeBrowserProfile = "user-data-dir=C:\\Users\\Cont\\AppData\\Local\\Google\\Chrome\\User Data";
                 break;
         }
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-//
+//        driver = new ChromeDriver();
         LOGGER.info("before chrome");
         ChromeOptions options = new ChromeOptions();
         options.addArguments(chromeBrowserProfile);
