@@ -87,6 +87,7 @@ public class ChromeTest {
 
         String chromeDriverPath = "";
         String chromeBrowserProfile = "";
+        String chromeDriverVersion = "";
         switch (systemName){
             case "Linux" :
                 chromeDriverPath = "/opt/chromedriverfolder/chromedriver";
@@ -95,6 +96,7 @@ public class ChromeTest {
             case "Windows":
                 chromeDriverPath = "webdriver.chrome.driver=C:\\chromedriver\\chromedriver.exe";
                 chromeBrowserProfile = "user-data-dir=C:\\Users\\Cont\\AppData\\Local\\Google\\Chrome\\User Data";
+                chromeDriverVersion = "chrome.chromedriverVersion=77.0.3865.40";
                 break;
         }
 //        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
@@ -103,6 +105,7 @@ public class ChromeTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments(chromeBrowserProfile);
         options.addArguments(chromeDriverPath);
+        options.addArguments(chromeDriverVersion);
 
 //        DesiredCapabilities capabilities = new DesiredCapabilities();
 //        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
