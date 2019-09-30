@@ -102,6 +102,7 @@ public class ChromeTest {
 //        LOGGER.info("before chrome");
         ChromeOptions options = new ChromeOptions();
         options.addArguments(chromeBrowserProfile);
+        options.addArguments(chromeDriverPath);
 
 //        DesiredCapabilities capabilities = new DesiredCapabilities();
 //        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
