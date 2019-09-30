@@ -93,7 +93,7 @@ public class ChromeTest {
                 chromeBrowserProfile = "user-data-dir=/home/cont/.config/google-chrome";
                 break;
             case "Windows":
-                chromeDriverPath = "C:\\chromedriver\\chromedriver.exe";
+                chromeDriverPath = "webdriver.chrome.driver=C:\\chromedriver\\chromedriver.exe";
                 chromeBrowserProfile = "user-data-dir=C:\\Users\\Cont\\AppData\\Local\\Google\\Chrome\\User Data";
                 break;
         }
