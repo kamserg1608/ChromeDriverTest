@@ -97,23 +97,27 @@ public class ChromeTest {
                 chromeBrowserProfile = "user-data-dir=C:\\Users\\Cont\\AppData\\Local\\Google\\Chrome\\User Data";
                 break;
         }
-        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+//        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 //        driver = new ChromeDriver();
-        LOGGER.info("before chrome");
+//        LOGGER.info("before chrome");
         ChromeOptions options = new ChromeOptions();
         options.addArguments(chromeBrowserProfile);
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-        driver = new ChromeDriver(capabilities);
 
-        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+//        DesiredCapabilities capabilities = new DesiredCapabilities();
+//        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+//        driver = new ChromeDriver(capabilities);
+        String hubUrl  = "http://172.16.68.128:4444/wd/hub";
+//        WebDriver driver = new RemoteWebDriver(new URL(hubUrl), new ChromeOptions());
+        WebDriver driver = new RemoteWebDriver(new URL(hubUrl), options);
 
-        String browserName = cap.getBrowserName();
-        System.out.println(browserName);
-
-
-        String v = cap.getVersion().toString();
-        System.out.println(v);
+//        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+//
+//        String browserName = cap.getBrowserName();
+//        System.out.println(browserName);
+//
+//
+//        String v = cap.getVersion().toString();
+//        System.out.println(v);
 
         LOGGER.info("after chrome");
 //        ////////////////////
